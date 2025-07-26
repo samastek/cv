@@ -1,0 +1,9 @@
+{
+  "entry": [
+    "src/app/**",
+    "eslint.config.js"
+  ],
+  "project": [
+    "src/**/*.{js,ts,tsx}"
+  ]
+}

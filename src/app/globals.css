@@ -1,0 +1,737 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 220 14% 20%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 14% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 14% 20%;
+
+    --primary: 195 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 220 14% 20%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 195 100% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 195 100% 42%;
+
+    --radius: 0.75rem;
+
+    /* Siemens Colors */
+    --siemens-teal: 214 100% 42%;
+    --siemens-teal-light: 214 100% 85%;
+    --siemens-teal-dark: 214 100% 35%;
+    --siemens-navy: 222 47% 11%;
+    --siemens-gray: 220 13% 91%;
+    --siemens-dark-gray: 220 8% 46%;
+
+    /* Classic Colors */
+    --classic-gold: 43 96% 56%;
+    --classic-gold-light: 43 96% 85%;
+    --classic-burgundy: 348 83% 47%;
+    --classic-navy: 222 47% 11%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 20% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 195 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 215 28% 17%;
+    --muted-foreground: 218 11% 65%;
+
+    --accent: 195 100% 42%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: 195 100% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Custom animations and effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--primary) / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.6);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Siemens-themed elements */
+.siemens-gradient {
+  background: linear-gradient(135deg, hsl(var(--siemens-teal)) 0%, hsl(var(--siemens-teal-dark)) 100%);
+}
+
+.siemens-border {
+  border: 2px solid hsl(var(--siemens-teal));
+  position: relative;
+}
+
+.siemens-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, hsl(var(--siemens-teal)), hsl(var(--siemens-teal-light)), hsl(var(--siemens-teal)));
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.siemens-border:hover::before {
+  opacity: 0.3;
+}
+
+/* Classic decorative elements */
+.classic-divider {
+  position: relative;
+  text-align: center;
+  margin: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.classic-divider::before,
+.classic-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: hsl(var(--siemens-teal-light));
+  margin: 0 1rem;
+}
+
+.classic-divider span {
+  color: hsl(var(--siemens-teal-dark));
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Professional hover effects */
+.professional-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.professional-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Skill badge enhancements */
+.skill-badge {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.skill-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-badge:hover::before {
+  left: 100%;
+}
+
+.print-force-new-page {
+  page-break-before: always;
+}
+
+/* Print optimizations */
+@media print {
+  .animate-fade-in-up,
+  .animate-shimmer,
+  .animate-pulse-glow {
+    animation: none !important;
+  }
+  
+  .professional-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Better print layout */
+  body {
+    background: white !important;
+  }
+  
+  .siemens-border::before {
+    display: none !important;
+  }
+  
+  /* Optimize text for print */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  .skill-badge {
+    break-inside: avoid;
+  }
+  
+  /* Print-specific spacing */
+  .classic-divider {
+    margin: 1rem 0 !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem !important;
+  }
+  
+  .animate-fade-in-up {
+    animation-duration: 0.3s;
+  }
+  
+  .professional-hover:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Mobile header layout optimizations */
+  .mobile-header-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  /* Responsive avatar sizing */
+  .mobile-avatar {
+    width: 7rem;
+    height: 7rem;
+  }
+  
+  /* Mobile-friendly personal info badges */
+  .mobile-personal-info {
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+  
+  /* Mobile contact buttons */
+  .mobile-contact-buttons {
+    justify-content: center;
+  }
+  
+  /* Smaller gaps on mobile for better space utilization */
+  .mobile-spacing {
+    gap: 0.75rem;
+  }
+  
+  /* Mobile-friendly work experience badges */
+  .mobile-work-badges {
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+  
+  /* Ensure badges don't overflow on mobile */
+  .badge-container {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  
+  /* Mobile work experience layout */
+  .mobile-work-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
+
+/* Tablet-specific adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .container {
+    padding: 2rem !important;
+  }
+  
+  /* Ensure proper desktop layout starts at tablet */
+  .desktop-layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* Enhanced responsive breakpoints for avatar */
+@media (max-width: 640px) {
+  .responsive-avatar {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 768px) {
+  .responsive-avatar {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-avatar {
+    width: 8rem;
+    height: 8rem;
+  }
+}
+
+/* Mobile-first responsive typography */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+  }
+  
+  .mobile-about-text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    max-width: 100%;
+  }
+  
+  .mobile-location-text {
+    font-size: 0.875rem;
+    justify-content: center;
+  }
+}
+
+/* Dark mode support for future enhancement */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-enabled {
+    --background: 222 47% 11%;
+    --foreground: 210 20% 98%;
+  }
+}
+
+/* Arabic and RTL Support */
+.font-arabic {
+  font-family: var(--font-noto-kufi-arabic), 'Noto Kufi Arabic', sans-serif !important;
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .gap-x-2 > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* RTL Language Selector */
+[dir="rtl"] .fixed.bottom-6.right-6 {
+  right: auto;
+  left: 1.5rem;
+}
+
+/* Arabic text styling */
+.arabic-text {
+  font-family: var(--font-noto-kufi-arabic), 'Noto Kufi Arabic', sans-serif;
+  line-height: 1.8;
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: right;
+}
+
+[dir="rtl"] .text-left {
+  text-align: left;
+}
+
+/* RTL specific layout adjustments */
+[dir="rtl"] .space-y-1\.5 > * + * {
+  margin-top: 0.375rem;
+}
+
+[dir="rtl"] .grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .flex-col {
+  flex-direction: column;
+}
+
+/* RTL Avatar positioning for Arabic layout */
+[dir="rtl"] .flex.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .order-first {
+  order: -1;
+}
+
+[dir="rtl"] .order-last {
+  order: 1;
+}
+
+/* Ensure proper spacing for Arabic layout */
+[dir="rtl"] .ml-6 {
+  margin-left: 1.5rem;
+  margin-right: 0;
+}
+
+[dir="rtl"] .mr-6 {
+  margin-right: 1.5rem;
+  margin-left: 0;
+}
+
+/* RTL Print optimizations */
+@media print {
+  [dir="rtl"] {
+    direction: rtl;
+  }
+  
+  [dir="rtl"] * {
+    text-align: right;
+  }
+  
+  /* RTL avatar positioning in print */
+  [dir="rtl"] .flex.items-center.justify-between {
+    flex-direction: row-reverse;
+  }
+  
+  [dir="rtl"] .order-first {
+    order: -1;
+  }
+}
+
+/* RTL Timeline specific adjustments */
+[dir="rtl"] .timeline-content {
+  margin-right: 8rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .timeline-marker {
+  right: 2.5rem;
+  left: auto;
+}
+
+[dir="rtl"] .timeline-spine {
+  right: 4rem;
+  left: auto;
+}
+
+[dir="rtl"] .timeline-connecting-line {
+  right: 3rem;
+  left: auto;
+  background: linear-gradient(to left, currentColor, transparent);
+}
+
+/* RTL Badge and flex adjustments for timeline */
+[dir="rtl"] .flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-end {
+  justify-content: flex-end;
+}
+
+/* RTL specific margin adjustments */
+[dir="rtl"] .mr-32 {
+  margin-right: 8rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0.5rem;
+  margin-right: 0;
+}
+
+[dir="rtl"] .mr-2 {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Enhanced Arabic RTL Layout Support */
+[dir="rtl"] .list-disc {
+  list-style-position: inside;
+  text-align: right;
+}
+
+[dir="rtl"] .list-outside {
+  list-style-position: outside;
+  padding-right: 1rem;
+  padding-left: 0;
+}
+
+/* RTL Badge alignments */
+[dir="rtl"] .inline-flex {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .gap-x-1 > * + * {
+  margin-right: 0.25rem;
+  margin-left: 0;
+}
+
+[dir="rtl"] .gap-x-2 > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* RTL Work experience layout fixes */
+[dir="rtl"] .work-section .flex.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+/* For Arabic layout: Position name on right, dates on left */
+[dir="rtl"] .flex.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+/* Ensure dates appear on the left in RTL layout */
+[dir="rtl"] .tabular-nums {
+  text-align: left; /* Keep dates left-aligned even in RTL */
+  order: -1; /* Move dates to the left side */
+}
+
+/* Position/company name should be on the right in RTL */
+[dir="rtl"] .inline-flex.items-center.justify-center.gap-x-2 {
+  order: 1; /* Move position/company to the right side */
+  justify-content: flex-end;
+}
+
+/* RTL Education section fixes */
+[dir="rtl"] .education-section .flex.items-center.justify-between {
+  flex-direction: row-reverse;
+}
+
+/* Arabic font family for better readability */
+[dir="rtl"] * {
+  font-family: var(--font-noto-kufi-arabic), 'Noto Kufi Arabic', sans-serif;
+}
+
+[dir="rtl"] .font-mono {
+  font-family: 'Courier New', monospace; /* Keep monospace for dates/technical content */
+}
+
+/* iPhone-like skill icon container */
+.skill-icon-container {
+  position: relative;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.skill-icon-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0.1), rgba(0,0,0,0.05));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+.skill-icon-container:hover {
+  box-shadow: 
+    0 10px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced shine effect for skill icons */
+.skill-icon-container .shine-overlay {
+  background: linear-gradient(135deg, 
+    transparent 0%, 
+    rgba(255,255,255,0.1) 25%, 
+    rgba(255,255,255,0.2) 50%, 
+    rgba(255,255,255,0.1) 75%, 
+    transparent 100%);
+}
+
+/* Optimized Skill Icons Grid Layout */
+.skills-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap: 0.75rem;
+  max-width: 100%;
+  padding: 1rem;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .skills-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .skills-grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+    gap: 1rem;
+    max-width: 80rem; /* 5xl */
+  }
+}
+
+/* Enhanced skill icon responsiveness */
+.skill-icon-container {
+  min-width: 48px;
+  min-height: 48px;
+  aspect-ratio: 1;
+}
+
+@media (min-width: 640px) {
+  .skill-icon-container {
+    min-width: 56px;
+    min-height: 56px;
+  }
+}
+
+@media (min-width: 768px) {
+  .skill-icon-container {
+    min-width: 64px;
+    min-height: 64px;
+  }
+}
+
+/* Custom utility classes for skill icons */
+.w-18 {
+  width: 4.5rem; /* 72px */
+}
+
+.h-18 {
+  height: 4.5rem; /* 72px */
+}
+
+/* Compact tooltip for smaller icons */
+.skill-tooltip-compact {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.625rem;
+  bottom: -2.25rem;
+}
+
+@media (min-width: 640px) {
+  .skill-tooltip-compact {
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    bottom: -2.5rem;
+  }
+}

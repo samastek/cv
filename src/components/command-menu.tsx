@@ -96,14 +96,8 @@ export const CommandMenu = ({ links }: Props) => {
           <CommandGroup heading="Actions">
             <CommandItem
               onSelect={() => {
-                setOpen(false);
-                window.print();
+                handleGeneratePdf();
               }}
-            >
-              <span>{messages.commands.print}</span>
-            </CommandItem>
-            <CommandItem
-              onSelect={handleGeneratePdf}
               disabled={isGeneratingPdf}
             >
               <span>{isGeneratingPdf ? messages.commands.generatingPdf : messages.commands.generatePdf}</span>

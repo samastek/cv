@@ -567,7 +567,7 @@ export const createCVDocument = (locale: Locale = 'en') => {
         </View>
 
         {/* Skills */}
-        <View style={styles.section}>
+        <View style={styles.section} break>
           <View style={isRTL ? styles.sectionTitleContainerRTL : styles.sectionTitleContainer}>
             <View style={styles.sectionTitleLineShort} />
             <Text style={isRTL ? styles.sectionTitleRTL : styles.sectionTitle}>

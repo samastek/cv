@@ -58,12 +58,6 @@ const enMessages = {
       organization: "Technical University of Nuremberg",
       type: "Academic Honor",
       description: "Nominated and chosen for the I.C.S. Sponsorship Program recognizing outstanding academic performance in dual study program."
-    },
-    excellence: {
-      title: "Excellent Academic Performance",
-      organization: "General University Entrance Qualification",
-      type: "Academic Achievement",
-      description: "Achieved final grade of 1.5 in General University Entrance Qualification (Abitur)."
     }
   },
   

@@ -58,12 +58,6 @@ const deMessages = {
       organization: "Technische Hochschule Nürnberg",
       type: "Akademische Auszeichnung",
       description: "Nominiert und ausgewählt für das I.C.S. Förderprogramm in Anerkennung herausragender akademischer Leistungen im dualen Studium."
-    },
-    excellence: {
-      title: "Ausgezeichnete akademische Leistung",
-      organization: "Allgemeine Hochschulreife",
-      type: "Akademische Leistung",
-      description: "Abschlussnote 1,0 in der Allgemeinen Hochschulreife (Abitur) erreicht."
     }
   },
   

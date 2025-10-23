@@ -21,11 +21,13 @@ const arMessages = {
   work: {
     siemens: {
       title: "مطور برمجيات البحث والتطوير",
-      description: "قيادة تطوير حلول برمجيات مبتكرة لأنظمة الأتمتة الصناعية. متخصص في تطوير الواجهة الخلفية Java/Spring Boot وتكامل الأنظمة وأنظمة Linux المدمجة. المساهمة في منصات إنترنت الأشياء من الجيل التالي وحلول المصانع الرقمية التي تعزز كفاءة التصنيع وموثوقيته."
+      location: "نورمبرغ، ألمانيا",
+      description: "تطوير حلول شحن المركبات الكهربائية من الجيل القادم لقسم البحث والتطوير في شركة سيمنز. إنشاء منتجات وعمليات وأطر عمل للبنية التحتية للتنقل المستدام."
     },
     adorsys: {
       title: "مهندس برمجيات",
-      description: "مهندس برمجيات يعمل مع Java و Spring Boot و Spring Security و OAuth2 و Maven و Hibernate و JUnit5 و Mockito. خبرة مع Angular و Flutter و Jenkins و Docker و Helm و OpenShift. جزء من برنامج الدراسة المزدوجة بالتعاون مع الجامعة التقنية في نورمبرغ."
+      location: "نورمبرغ، ألمانيا",
+      description: "تطوير وصيانة حلول برمجيات مالية لعملاء بأصول تزيد عن 10 مليار يورو. تنفيذ أنظمة خلفية آمنة باستخدام Java و Spring Boot و Spring Security و OAuth2 و Maven و Hibernate و JUnit5 و Mockito. العمل مع Angular و Flutter و Jenkins و Docker و Helm و OpenShift في بيئة رشيقة."
     }
   },
   

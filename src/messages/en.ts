@@ -21,11 +21,13 @@ const enMessages = {
   work: {
     siemens: {
       title: "R&D Software Engineer",
-      description: "Working with smart People to create the next generation of Electirical Vehicle Charging Solutions. Developing Products, Processes and Frameworks for the future of sustainable mobility"
+      location: "Nuremberg, Germany",
+      description: "Developing next-generation electric vehicle charging solutions for Siemens R&D. Creating products, processes, and frameworks for sustainable mobility infrastructure."
     },
     adorsys: {
       title: "Software Engineer",
-      description: "Developing and maintaining one of the leading financial software solutions in germany. Focused on Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate, JUnit5, Mockito, Angular, Flutter, Jenkins, Docker, Helm and OpenShift. "
+      location: "Nuremberg, Germany",
+      description: "Developed and maintained financial software solutions serving clients with over 10 billion EUR in assets. Implemented secure backend systems using Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate, JUnit5, and Mockito. Worked with Angular, Flutter, Jenkins, Docker, Helm, and OpenShift in an agile environment."
     }
   },
   

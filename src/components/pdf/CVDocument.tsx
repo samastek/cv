@@ -218,6 +218,44 @@ const styles = StyleSheet.create({
     color: '#64748b',
     fontStyle: 'italic',
   },
+  // Work experience specific styles
+  workHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 4,
+  },
+  workHeaderRTL: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 4,
+  },
+  workTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  workTitleRowRTL: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  workCompany: {
+    fontSize: 11,
+    fontFamily: 'Helvetica-Bold',
+    color: '#0f172a',
+  },
+  workSeparator: {
+    fontSize: 11,
+    color: '#0f172a',
+    marginHorizontal: 6,
+  },
+  workTitle: {
+    fontSize: 11,
+    fontStyle: 'italic',
+    color: '#0f172a',
+  },
   itemDescription: {
     fontSize: 9,
     color: '#334155',
@@ -413,13 +451,14 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
 
             return (
               <View key={key} style={styles.item}>
-                <View style={isRTL ? styles.itemHeaderRTL : styles.itemHeader}>
-                  <View style={{ flex: 1 }}>
-                    <Text style={styles.itemTitle}>{resumeWork.company}</Text>
-                    <Text style={styles.itemSubtitle}>{work.title}</Text>
+                <View style={isRTL ? styles.workHeaderRTL : styles.workHeader}>
+                  <View style={isRTL ? styles.workTitleRowRTL : styles.workTitleRow}>
+                    <Text style={styles.workCompany}>{resumeWork.company}</Text>
+                    <Text style={styles.workSeparator}>—</Text>
+                    <Text style={styles.workTitle}>{work.title}</Text>
                   </View>
                   <Text style={styles.itemDate}>
-                    {resumeWork.start} - {resumeWork.end ?? 'Present'}
+                    {resumeWork.start} – {resumeWork.end ?? 'Present'}
                   </Text>
                 </View>
                 <Text style={styles.itemDescription}>{work.description}</Text>

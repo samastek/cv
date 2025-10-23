@@ -21,11 +21,13 @@ const deMessages = {
   work: {
     siemens: {
       title: "R&D Software-Entwickler",
-      description: "Leitung der Entwicklung innovativer Softwarelösungen für industrielle Automatisierungssysteme. Spezialisiert auf Java/Spring Boot Backend-Entwicklung, Systemintegration und eingebettete Linux-Systeme. Beitrag zu IoT-Plattformen der nächsten Generation und digitalen Fabrikslösungen, die die Produktionseffizienz und -zuverlässigkeit verbessern."
+      location: "Nürnberg, Deutschland",
+      description: "Entwicklung von Ladelösungen der nächsten Generation für Elektrofahrzeuge im Siemens R&D-Bereich. Erstellung von Produkten, Prozessen und Frameworks für nachhaltige Mobilitätsinfrastruktur."
     },
     adorsys: {
       title: "Software-Ingenieur",
-      description: "Software-Ingenieur mit Fokus auf Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate, JUnit5 und Mockito. Erfahrung mit Angular, Flutter, Jenkins, Docker, Helm und OpenShift. Teil des dualen Studienprogramms in Kooperation mit der Technischen Hochschule Nürnberg."
+      location: "Nürnberg, Deutschland",
+      description: "Entwicklung und Wartung von Finanz-Software-Lösungen für Kunden mit über 10 Milliarden EUR verwaltetem Vermögen. Implementierung sicherer Backend-Systeme mit Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate, JUnit5 und Mockito. Arbeit mit Angular, Flutter, Jenkins, Docker, Helm und OpenShift in einer agilen Umgebung."
     }
   },
   

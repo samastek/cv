@@ -1,9 +1,0 @@
-version: '3.8'
-
-services:
-  latex:
-    build: .
-    volumes:
-      - .:/workspace
-    working_dir: /workspace
-    command: make pdf

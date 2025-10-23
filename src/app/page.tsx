@@ -25,24 +25,21 @@ export default function Page() {
     )}>
       <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-4">
         {/* Mobile-optimized header layout */}
-        <div className={cn(
-          "flex flex-col items-center space-y-6 md:flex-row md:items-center md:justify-between md:space-y-0",
-          isArabic && "md:flex-row-reverse"
-        )}>
-          {/* Title and Info Section - appears first on mobile, positioned based on language on desktop */}
+        <div className="flex flex-row items-start justify-between gap-x-4">
+          {/* Title and Info Section */}
           <div className={cn(
-            "flex-1 space-y-1.5 text-center md:text-left",
-            isArabic ? "md:ml-6 md:text-right" : "md:mr-6"
+            "flex-1 space-y-1.5 text-center min-w-0",
+            isArabic ? "sm:text-right" : "sm:text-left"
           )}>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-900 via-blue-900 to-blue-600 bg-clip-text text-transparent animate-shimmer">
+            <h1 className="text-3xl font-bold text-slate-900">
               {messages.name}
             </h1>
             <p className="max-w-md text-pretty font-medium text-lg text-slate-700 print:text-[12px] mx-auto md:mx-0">
               {messages.about}
             </p>
             <p className={cn(
-              "max-w-md items-center text-pretty font-mono text-sm text-muted-foreground flex justify-center md:justify-start",
-              isArabic && "md:justify-end"
+              "max-w-md items-center text-pretty font-mono text-sm text-muted-foreground flex justify-center",
+              isArabic ? "sm:justify-end" : "sm:justify-start"
             )}>
               <a
                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline hover:text-blue-600 transition-colors duration-300"
@@ -55,8 +52,8 @@ export default function Page() {
             </p>
             {/* Compact Personal Info & Languages */}
             <div className={cn(
-              "flex flex-wrap gap-2 pt-3 text-xs justify-center md:justify-start",
-              isArabic && "md:justify-end"
+              "flex flex-wrap gap-2 pt-3 text-xs justify-center",
+              isArabic ? "sm:justify-end" : "sm:justify-start"
             )}>
               {/* Personal Info */}
               <div className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 rounded-md border border-slate-200">
@@ -65,7 +62,7 @@ export default function Page() {
               </div>
               <div className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 rounded-md border border-slate-200">
                 <HomeIcon className="size-3 text-slate-600" />
-                <a 
+                <a
                   href={RESUME_DATA.personalInfo.placeOfBirthLink}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -82,7 +79,7 @@ export default function Page() {
                 <HeartIcon className="size-3 text-slate-600" />
                 <span className="text-slate-700 font-medium">{messages.personalInfo.values.maritalStatus}</span>
               </div>
-              
+
               {/* Language Switcher - Clickable Text */}
               <div className="flex items-center gap-1.5 px-2 py-1 bg-slate-50 rounded-md border border-slate-200">
                 <LanguagesIcon className="size-3 text-slate-600" />
@@ -107,14 +104,14 @@ export default function Page() {
                 </div>
               </div>
             </div>
-            
+
             <div className={cn(
-              "flex gap-x-2 pt-2 font-mono text-sm text-muted-foreground print:hidden justify-center md:justify-start",
-              isArabic && "md:justify-end"
+              "flex gap-x-2 pt-2 font-mono text-sm text-muted-foreground print:hidden justify-center",
+              isArabic ? "sm:justify-end" : "sm:justify-start"
             )}>
               {(() => {
                 const contactButtons = [];
-                
+
                 // Email button
                 if (RESUME_DATA.contact.email) {
                   contactButtons.push(
@@ -131,7 +128,7 @@ export default function Page() {
                     </Button>
                   );
                 }
-                
+
                 // Phone button
                 if (RESUME_DATA.contact.tel) {
                   contactButtons.push(
@@ -148,7 +145,7 @@ export default function Page() {
                     </Button>
                   );
                 }
-                
+
                 // Social media buttons
                 RESUME_DATA.contact.social.forEach((social) => {
                   contactButtons.push(
@@ -165,7 +162,7 @@ export default function Page() {
                     </Button>
                   );
                 });
-                
+
                 // Return reversed array for Arabic, normal for others
                 return isArabic ? contactButtons.reverse() : contactButtons;
               })()}
@@ -184,11 +181,8 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Avatar Section - appears second on mobile, positioned based on language on desktop */}
-          <Avatar className={cn(
-            "size-32 sm:size-36 md:size-40 lg:size-44 ring-4 ring-primary/20 ring-offset-2 animate-pulse-glow flex-shrink-0",
-            isArabic ? "md:order-first" : "md:order-last"
-          )}>
+          {/* Avatar Section */}
+          <Avatar className="size-40 sm:size-44 md:size-48 lg:size-52 ring-4 ring-primary/20 ring-offset-2 animate-pulse-glow flex-shrink-0">
             <AvatarImage alt={messages.name} src={RESUME_DATA.avatarUrl} />
             <AvatarFallback className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-br from-primary to-primary/80 text-white">
               {messages.initials}
@@ -217,14 +211,17 @@ export default function Page() {
                 <div className="relative">
                   <div className={cn(
                     "flex flex-col gap-y-2 text-base md:flex-row md:items-center md:justify-between md:gap-y-0",
-                    isArabic ? "md:justify-between" : "md:justify-between"
+                    isArabic && "md:flex-row-reverse"
                   )}>
                     <div className={cn(
-                      "flex flex-col gap-y-1 md:flex-row md:items-center md:gap-x-2",
-                      isArabic ? "md:order-2 items-end md:items-center" : "md:order-1 items-start md:items-center"
+                      "flex flex-col gap-y-1 md:flex-row md:items-center md:gap-x-2 md:order-1",
+                      isArabic && "items-end md:flex-row-reverse md:order-2"
                     )}>
-                      <h3 className="font-bold leading-none">
-                        <a 
+                      <h3 className={cn(
+                        "font-bold leading-none",
+                        isArabic && "text-right"
+                      )}>
+                        <a
                           className={cn(
                             "hover:underline transition-all duration-300 relative",
                             isSiemens ? "text-slate-800 hover:text-blue-700 font-semibold" : "text-slate-800 hover:text-blue-600"
@@ -233,14 +230,17 @@ export default function Page() {
                         >
                           {resumeWork?.company}
                           {isSiemens && (
-                            <span className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full shadow-sm" />
+                            <span className={cn(
+                              "absolute -top-1 w-2 h-2 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full shadow-sm",
+                              isArabic ? "-left-1" : "-right-1"
+                            )} />
                           )}
                         </a>
                       </h3>
 
                       <div className={cn(
                         "flex flex-wrap gap-1 mt-1 md:mt-0",
-                        isArabic ? "justify-end md:justify-start" : "justify-start"
+                        isArabic ? "justify-end" : "justify-start"
                       )}>
                         {resumeWork?.badges.map((badge) => (
                           <Badge
@@ -254,9 +254,9 @@ export default function Page() {
                       </div>
                     </div>
                     <div className={cn(
-                      "text-sm tabular-nums font-medium self-start md:self-center",
+                      "text-sm tabular-nums font-medium self-start md:self-center md:order-2",
                       isSiemens ? "text-blue-700 font-semibold" : "text-black",
-                      isArabic ? "md:order-1 text-right md:text-left" : "md:order-2 text-left"
+                      isArabic && "self-end md:order-1 text-right"
                     )}>
                       {resumeWork?.start} - {resumeWork?.end ?? "Present"}
                     </div>
@@ -265,7 +265,7 @@ export default function Page() {
                   <h4 className={cn(
                     "font-semibold text-base leading-none print:text-[12px] mt-1",
                     isSiemens ? "text-slate-700 font-bold" : "text-slate-700",
-                    isArabic ? "text-right" : ""
+                    isArabic && "text-right"
                   )}>
                     {work.title}
                   </h4>
@@ -273,7 +273,7 @@ export default function Page() {
                 <div className={cn(
                   "mt-3 text-sm print:text-[10px] leading-relaxed",
                   isSiemens ? "text-slate-700" : "text-slate-600",
-                  isArabic ? "text-right" : ""
+                  isArabic && "text-right"
                 )}>
                   {work.description}
                 </div>
@@ -293,33 +293,20 @@ export default function Page() {
             return (
               <div key={key} className="mb-4">
                 <div>
-                  <div className={cn(
-                    "flex items-center gap-x-2 text-base",
-                    isArabic ? "justify-between" : "justify-between"
-                  )}>
-                    <h3 className={cn(
-                      "font-bold leading-none text-slate-800",
-                      isArabic ? "order-2" : "order-1"
-                    )}>
+                  <div className="flex items-center gap-x-2 text-base justify-between">
+                    <h3 className="font-bold leading-none text-slate-800 order-1">
                       {education.school}
                     </h3>
-                    <div className={cn(
-                      "text-sm tabular-nums text-black font-medium",
-                      isArabic ? "order-1" : "order-2"
-                    )}>
+                    <div className="text-sm tabular-nums text-black font-medium order-2">
                       {resumeEducation?.start} - {resumeEducation?.end}
                     </div>
                   </div>
                 </div>
-                <div className={`mt-2 print:text-[12px] text-slate-600 font-medium ${
-                  isArabic ? 'text-right' : ''
-                }`}>
+                <div className="mt-2 print:text-[12px] text-slate-600 font-medium">
                   {education.degree}
                 </div>
                 {education.description && (
-                  <div className={`mt-1 print:text-[10px] text-slate-500 text-sm ${
-                    isArabic ? 'text-right' : ''
-                  }`}>
+                  <div className="mt-1 print:text-[10px] text-slate-500 text-sm">
                     {education.description}
                   </div>
                 )}
@@ -341,32 +328,19 @@ export default function Page() {
             return (
               <div key={key} className="mb-4">
                 <div>
-                  <div className={cn(
-                    "flex items-center gap-x-2 text-base",
-                    isArabic ? "justify-between" : "justify-between"
-                  )}>
-                    <h3 className={cn(
-                      "font-bold leading-none text-slate-800",
-                      isArabic ? "order-2" : "order-1"
-                    )}>
+                  <div className="flex items-center gap-x-2 text-base justify-between">
+                    <h3 className="font-bold leading-none text-slate-800 order-1">
                       {recognition.title}
                     </h3>
-                    <div className={cn(
-                      "text-sm tabular-nums text-black font-medium",
-                      isArabic ? "order-1" : "order-2"
-                    )}>
+                    <div className="text-sm tabular-nums text-black font-medium order-2">
                       {resumeRecognition?.date}
                     </div>
                   </div>
-                  <div className={`mt-1 text-sm font-medium text-slate-600 ${
-                    isArabic ? 'text-right' : ''
-                  }`}>
+                  <div className="mt-1 text-sm font-medium text-slate-600">
                     {recognition.organization} • {recognition.type}
                   </div>
                 </div>
-                <div className={`mt-2 print:text-[12px] text-slate-600 text-sm ${
-                  isArabic ? 'text-right' : ''
-                }`}>
+                <div className="mt-2 print:text-[12px] text-slate-600 text-sm">
                   {recognition.description}
                 </div>
               </div>
@@ -423,15 +397,9 @@ export default function Page() {
           <div className="classic-divider">
             <span>{messages.sections.interests}</span>
           </div>
-          <ul className={cn(
-            "list-disc list-inside space-y-2 text-slate-700",
-            isArabic && "list-outside text-right"
-          )}>
+          <ul className="list-disc space-y-2 text-slate-700 list-inside">
             {messages.interestsList.map((interest, index) => (
-              <li key={index} className={cn(
-                "text-sm leading-relaxed",
-                isArabic && "text-right"
-              )}>
+              <li key={index} className="text-sm leading-relaxed">
                 {interest}
               </li>
             ))}

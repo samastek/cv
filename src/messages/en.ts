@@ -20,7 +20,7 @@ const enMessages = {
   // Work experience
   work: {
     siemens: {
-      title: "R&D Software Engineer",
+      title: "Software Engineer at R&D",
       location: "Nuremberg, Germany",
       description: "Developing next-generation electric vehicle charging solutions for Siemens R&D. Creating products, processes, and frameworks for sustainable mobility infrastructure."
     },

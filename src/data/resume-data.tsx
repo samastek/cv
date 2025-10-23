@@ -48,7 +48,7 @@ export const RESUME_DATA = {
       company: "Siemens AG",
       link: "https://www.siemens.com",
       badges: ["Smart Infrastructure", "R&D", "Full-time"],
-      title: "R&D Software Engineer",
+      title: "Software Engineer at R&D",
       start: "2022",
       end: null,
       description:

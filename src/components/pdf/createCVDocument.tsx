@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   avatar: {
     width: 100,
     height: 100,
-    borderRadius: 4,
+    borderRadius: 50,
     objectFit: 'cover',
   },
   name: {
@@ -231,30 +231,61 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginBottom: 4,
   },
-  workTitleRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    flexWrap: 'wrap',
+  workTitleColumn: {
+    flexDirection: 'column',
+    gap: 2,
   },
-  workTitleRowRTL: {
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-    flexWrap: 'wrap',
+  workTitleColumnRTL: {
+    flexDirection: 'column',
+    gap: 2,
+    alignItems: 'flex-end',
   },
   workCompany: {
     fontSize: 11,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
   },
-  workSeparator: {
-    fontSize: 11,
-    color: '#0f172a',
-    marginHorizontal: 6,
-  },
   workTitle: {
-    fontSize: 11,
+    fontSize: 10,
     fontStyle: 'italic',
+    color: '#475569',
+  },
+  // Recognition specific styles
+  recognitionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 4,
+  },
+  recognitionHeaderRTL: {
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 4,
+  },
+  recognitionTitleColumn: {
+    flexDirection: 'column',
+    gap: 2,
+  },
+  recognitionTitleColumnRTL: {
+    flexDirection: 'column',
+    gap: 2,
+    alignItems: 'flex-end',
+  },
+  recognitionTitle: {
+    fontSize: 11,
+    fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
+  },
+  recognitionOrganization: {
+    fontSize: 10,
+    fontStyle: 'italic',
+    color: '#475569',
+  },
+  recognitionType: {
+    fontSize: 8.5,
+    color: '#64748b',
+    marginBottom: 3,
   },
   itemDescription: {
     fontSize: 9,
@@ -448,9 +479,8 @@ export const createCVDocument = (locale: Locale = 'en') => {
             return (
               <View key={key} style={styles.item}>
                 <View style={isRTL ? styles.workHeaderRTL : styles.workHeader}>
-                  <View style={isRTL ? styles.workTitleRowRTL : styles.workTitleRow}>
+                  <View style={isRTL ? styles.workTitleColumnRTL : styles.workTitleColumn}>
                     <Text style={styles.workCompany}>{resumeWork.company}</Text>
-                    <Text style={styles.workSeparator}>—</Text>
                     <Text style={styles.workTitle}>{work.title}</Text>
                   </View>
                   <Text style={styles.itemDate}>
@@ -522,13 +552,14 @@ export const createCVDocument = (locale: Locale = 'en') => {
 
             return (
               <View key={key} style={styles.item}>
-                <View style={isRTL ? styles.itemHeaderRTL : styles.itemHeader}>
-                  <Text style={styles.itemTitle}>{recognition.title}</Text>
+                <View style={isRTL ? styles.recognitionHeaderRTL : styles.recognitionHeader}>
+                  <View style={isRTL ? styles.recognitionTitleColumnRTL : styles.recognitionTitleColumn}>
+                    <Text style={styles.recognitionTitle}>{recognition.title}</Text>
+                    <Text style={styles.recognitionOrganization}>{recognition.organization}</Text>
+                  </View>
                   <Text style={styles.itemDate}>{resumeRecognition.date}</Text>
                 </View>
-                <Text style={styles.itemDescription}>
-                  {recognition.organization} • {recognition.type}
-                </Text>
+                <Text style={styles.recognitionType}>{recognition.type}</Text>
                 <Text style={styles.itemDescription}>{recognition.description}</Text>
               </View>
             );

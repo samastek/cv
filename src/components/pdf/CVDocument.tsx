@@ -1,5 +1,5 @@
 import React from 'react';
-import { Document, Page, Text, View, StyleSheet, Font, Link, Image } from '@react-pdf/renderer';
+import { Document, Page, Text, View, StyleSheet, Link, Image } from '@react-pdf/renderer';
 import { RESUME_DATA } from '@/data/resume-data';
 import enMessages from '@/messages/en';
 import deMessages from '@/messages/de';
@@ -94,17 +94,22 @@ const styles = StyleSheet.create({
   },
   contactItem: {
     fontSize: 9,
-    color: '#334155',
+    color: '#0f172a',
+  },
+  contactLink: {
+    fontSize: 9,
+    color: '#0f172a',
+    textDecoration: 'underline',
   },
   contactLabel: {
     fontSize: 8,
-    color: '#64748b',
+    color: '#0f172a',
     marginRight: 4,
     fontFamily: 'Helvetica-Bold',
   },
   contactLabelRTL: {
     fontSize: 8,
-    color: '#64748b',
+    color: '#0f172a',
     marginLeft: 4,
     fontFamily: 'Helvetica-Bold',
   },
@@ -136,7 +141,7 @@ const styles = StyleSheet.create({
   },
   personalInfoItem: {
     fontSize: 8,
-    color: '#64748b',
+    color: '#0f172a',
   },
   // Section styles
   section: {
@@ -157,12 +162,12 @@ const styles = StyleSheet.create({
   },
   sectionTitleLineShort: {
     width: 30,
-    height: 0.5,
+    height: 1.5,
     backgroundColor: '#cbd5e1',
   },
   sectionTitleLineLong: {
     flex: 1,
-    height: 0.5,
+    height: 1.5,
     backgroundColor: '#cbd5e1',
   },
   sectionTitle: {
@@ -200,46 +205,25 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
+    textDecoration: 'none',
   },
   itemSubtitle: {
     fontSize: 9.5,
     color: '#475569',
     marginTop: 2,
-    marginBottom: 3,
     fontStyle: 'italic',
   },
   itemDate: {
     fontSize: 8.5,
     color: '#64748b',
+    fontStyle: 'italic',
   },
   itemDescription: {
     fontSize: 9,
     color: '#334155',
     lineHeight: 1.5,
-    marginTop: 3,
+    marginTop: 4,
     textAlign: 'justify',
-  },
-  badges: {
-    flexDirection: 'row',
-    gap: 5,
-    marginTop: 5,
-    marginBottom: 3,
-    flexWrap: 'wrap',
-  },
-  badgesRTL: {
-    flexDirection: 'row-reverse',
-    gap: 5,
-    marginTop: 5,
-    marginBottom: 3,
-    flexWrap: 'wrap',
-  },
-  badge: {
-    backgroundColor: '#f1f5f9',
-    paddingHorizontal: 6,
-    paddingVertical: 2.5,
-    borderRadius: 2,
-    fontSize: 7.5,
-    color: '#64748b',
   },
   // Skills
   skillsGrid: {
@@ -282,22 +266,10 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
   },
   projectTech: {
-    flexDirection: 'row',
-    gap: 4,
-    flexWrap: 'wrap',
-  },
-  projectTechRTL: {
-    flexDirection: 'row-reverse',
-    gap: 4,
-    flexWrap: 'wrap',
-  },
-  techBadge: {
-    fontSize: 7,
-    backgroundColor: '#f1f5f9',
+    fontSize: 8.5,
     color: '#64748b',
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    borderRadius: 2,
+    marginTop: 2,
+    fontStyle: 'italic',
   },
   // Interests
   interestsList: {
@@ -364,7 +336,7 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
                 {RESUME_DATA.contact.email && (
                   <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
                     <Image src={emailIcon} style={styles.contactIcon} />
-                    <Link src={`mailto:${RESUME_DATA.contact.email}`} style={styles.contactItem}>
+                    <Link src={`mailto:${RESUME_DATA.contact.email}`} style={styles.contactLink}>
                       {RESUME_DATA.contact.email}
                     </Link>
                   </View>
@@ -372,7 +344,7 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
                 {RESUME_DATA.contact.tel && (
                   <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
                     <Image src={phoneIcon} style={styles.contactIcon} />
-                    <Link src={`tel:${RESUME_DATA.contact.tel}`} style={styles.contactItem}>
+                    <Link src={`tel:${RESUME_DATA.contact.tel}`} style={styles.contactLink}>
                       {RESUME_DATA.contact.tel}
                     </Link>
                   </View>
@@ -382,7 +354,7 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
                   return (
                     <View key={social.name} style={isRTL ? styles.contactRowRTL : styles.contactRow}>
                       <Image src={iconSrc} style={styles.contactIcon} />
-                      <Link src={social.url} style={styles.contactItem}>
+                      <Link src={social.url} style={styles.contactLink}>
                         {social.name}
                       </Link>
                     </View>
@@ -443,21 +415,12 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
               <View key={key} style={styles.item}>
                 <View style={isRTL ? styles.itemHeaderRTL : styles.itemHeader}>
                   <View style={{ flex: 1 }}>
-                    <Link src={resumeWork.link} style={styles.itemTitle}>
-                      {resumeWork.company}
-                    </Link>
+                    <Text style={styles.itemTitle}>{resumeWork.company}</Text>
                     <Text style={styles.itemSubtitle}>{work.title}</Text>
                   </View>
                   <Text style={styles.itemDate}>
                     {resumeWork.start} - {resumeWork.end ?? 'Present'}
                   </Text>
-                </View>
-                <View style={isRTL ? styles.badgesRTL : styles.badges}>
-                  {resumeWork.badges.map((badge) => (
-                    <Text key={badge} style={styles.badge}>
-                      {badge}
-                    </Text>
-                  ))}
                 </View>
                 <Text style={styles.itemDescription}>{work.description}</Text>
               </View>
@@ -600,13 +563,9 @@ export const CVDocument: React.FC<CVDocumentProps> = ({ locale = 'en' }) => {
               <View key={key} style={styles.projectCard}>
                 <Text style={styles.projectTitle}>{project.title}</Text>
                 <Text style={styles.projectDescription}>{project.description}</Text>
-                <View style={isRTL ? styles.projectTechRTL : styles.projectTech}>
-                  {resumeProject.techStack.map((tech) => (
-                    <Text key={tech} style={styles.techBadge}>
-                      {tech}
-                    </Text>
-                  ))}
-                </View>
+                <Text style={styles.projectTech}>
+                  {resumeProject.techStack.join(' • ')}
+                </Text>
               </View>
             );
           })}

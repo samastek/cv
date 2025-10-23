@@ -34,7 +34,7 @@ const deMessages = {
     university: {
       school: "Technische Hochschule Nürnberg",
       degree: "Dualer I.C.S. Bachelor-Abschluss in Informatik",
-      description: "In Kooperation mit adorsys GmbH & CO KG, Abschlussnote: 2,0"
+      description: "Abschlussnote: 2,0"
     },
     abitur: {
       school: "Allgemeine Hochschulreife",

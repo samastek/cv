@@ -33,7 +33,7 @@ export const RESUME_DATA = {
       degree: "Dual I.C.S. Bachelor's Degree in Computer Science",
       start: "2018",
       end: "2022",
-      description: "In cooperation with adorsys GmbH & CO KG, Final Grade: 2.0"
+      description: "Final Grade: 2.0"
     },
     {
       school: "General University Entrance Qualification",

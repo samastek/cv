@@ -34,7 +34,7 @@ const enMessages = {
     university: {
       school: "Technical University of Nuremberg (Technische Hochschule Nürnberg)",
       degree: "Dual I.C.S. Bachelor's Degree in Computer Science",
-      description: "In cooperation with adorsys GmbH & CO KG, Final Grade: 2.0"
+      description: "Final Grade: 2.0"
     },
     abitur: {
       school: "General University Entrance Qualification",

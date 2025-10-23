@@ -4,6 +4,7 @@ import { RESUME_DATA } from '@/data/resume-data';
 import enMessages from '@/messages/en';
 import deMessages from '@/messages/de';
 import arMessages from '@/messages/ar';
+import path from 'path';
 
 // Type for locale
 type Locale = 'en' | 'de' | 'ar';
@@ -33,19 +34,13 @@ const styles = StyleSheet.create({
   // Header section
   header: {
     flexDirection: 'row',
-    marginBottom: 15,
-    paddingBottom: 12,
+    marginBottom: 20,
     gap: 15,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#cbd5e1',
   },
   headerRTL: {
     flexDirection: 'row-reverse',
-    marginBottom: 15,
-    paddingBottom: 12,
+    marginBottom: 20,
     gap: 15,
-    borderBottomWidth: 0.5,
-    borderBottomColor: '#cbd5e1',
   },
   headerLeft: {
     flex: 1,
@@ -54,56 +49,89 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'right',
   },
+  twoColumnContainer: {
+    flexDirection: 'row',
+    gap: 15,
+    marginTop: 4,
+  },
+  twoColumnContainerRTL: {
+    flexDirection: 'row-reverse',
+    gap: 15,
+    marginTop: 4,
+  },
+  infoColumn: {
+    flexDirection: 'column',
+    gap: 3,
+  },
   avatar: {
-    width: 80,
-    height: 80,
+    width: 100,
+    height: 100,
     borderRadius: 4,
     objectFit: 'cover',
   },
   name: {
-    fontSize: 28,
+    fontSize: 22,
     fontFamily: 'Helvetica-Bold',
     color: '#0f172a',
-    marginBottom: 6,
-  },
-  about: {
-    fontSize: 10,
-    color: '#475569',
-    marginBottom: 0,
-    lineHeight: 1.3,
+    marginBottom: 8,
   },
   location: {
     fontSize: 9,
     color: '#64748b',
-    marginBottom: 6,
-    marginTop: 6,
+    marginBottom: 8,
   },
   contactInfo: {
-    flexDirection: 'row',
-    gap: 8,
-    marginTop: 6,
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    gap: 3,
+    marginTop: 4,
+    marginBottom: 8,
   },
   contactInfoRTL: {
-    flexDirection: 'row-reverse',
-    gap: 8,
-    marginTop: 6,
-    flexWrap: 'wrap',
+    flexDirection: 'column',
+    gap: 3,
+    marginTop: 4,
+    marginBottom: 8,
   },
   contactItem: {
     fontSize: 9,
+    color: '#334155',
+  },
+  contactLabel: {
+    fontSize: 8,
     color: '#64748b',
+    marginRight: 4,
+    fontFamily: 'Helvetica-Bold',
+  },
+  contactLabelRTL: {
+    fontSize: 8,
+    color: '#64748b',
+    marginLeft: 4,
+    fontFamily: 'Helvetica-Bold',
+  },
+  contactRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+  },
+  contactRowRTL: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    gap: 4,
+  },
+  contactIcon: {
+    width: 10,
+    height: 10,
   },
   personalInfoRow: {
     flexDirection: 'row',
-    gap: 10,
-    marginTop: 8,
+    gap: 8,
+    marginTop: 0,
     flexWrap: 'wrap',
   },
   personalInfoRowRTL: {
     flexDirection: 'row-reverse',
-    gap: 10,
-    marginTop: 8,
+    gap: 8,
+    marginTop: 0,
     flexWrap: 'wrap',
   },
   personalInfoItem: {
@@ -130,26 +158,26 @@ const styles = StyleSheet.create({
   sectionTitleLineShort: {
     width: 30,
     height: 0.5,
-    backgroundColor: '#cbd5e1',
+    backgroundColor: '#000000',
   },
   sectionTitleLineLong: {
     flex: 1,
     height: 0.5,
-    backgroundColor: '#cbd5e1',
+    backgroundColor: '#000000',
   },
   sectionTitle: {
-    fontSize: 12,
-    fontFamily: 'Helvetica-Bold',
-    color: '#0f172a',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
+    fontSize: 13,
+    fontFamily: 'Helvetica',
+    color: '#1e293b',
+    letterSpacing: 0.3,
+    fontWeight: 600,
   },
   sectionTitleRTL: {
-    fontSize: 12,
-    fontFamily: 'Helvetica-Bold',
-    color: '#0f172a',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
+    fontSize: 13,
+    fontFamily: 'Helvetica',
+    color: '#1e293b',
+    letterSpacing: 0.3,
+    fontWeight: 600,
     textAlign: 'right',
   },
   // Work/Education item
@@ -304,50 +332,87 @@ export const createCVDocument = (locale: Locale = 'en') => {
   const messages = messagesMap[locale];
   const isRTL = locale === 'ar';
 
+  // Get absolute paths for icons
+  const publicDir = path.join(process.cwd(), 'public');
+  const emailIcon = path.join(publicDir, 'icons', 'email.png');
+  const phoneIcon = path.join(publicDir, 'icons', 'phone.png');
+  const githubIcon = path.join(publicDir, 'icons', 'github.png');
+  const linkedinIcon = path.join(publicDir, 'icons', 'linkedin.png');
+  const calendarIcon = path.join(publicDir, 'icons', 'calendar.png');
+  const homeIcon = path.join(publicDir, 'icons', 'home.png');
+  const flagIcon = path.join(publicDir, 'icons', 'flag.png');
+  const heartIcon = path.join(publicDir, 'icons', 'heart.png');
+
   return (
     <Document>
       <Page size="A4" style={isRTL ? styles.pageRTL : styles.page}>
         {/* Header */}
         <View style={isRTL ? styles.headerRTL : styles.header}>
-          {/* Left side - Info */}
+          {/* Left side - Name and Location */}
           <View style={isRTL ? styles.headerLeftRTL : styles.headerLeft}>
             <Text style={styles.name}>{messages.name}</Text>
-            <Text style={styles.about}>{messages.about}</Text>
             <Text style={styles.location}>{messages.location}</Text>
 
-            {/* Contact Information */}
-            <View style={isRTL ? styles.contactInfoRTL : styles.contactInfo}>
-              {RESUME_DATA.contact.email && (
-                <Link src={`mailto:${RESUME_DATA.contact.email}`} style={styles.contactItem}>
-                  {RESUME_DATA.contact.email}
-                </Link>
-              )}
-              {RESUME_DATA.contact.tel && (
-                <Link src={`tel:${RESUME_DATA.contact.tel}`} style={styles.contactItem}>
-                  {RESUME_DATA.contact.tel}
-                </Link>
-              )}
-              {RESUME_DATA.contact.social.map((social) => (
-                <Link key={social.name} src={social.url} style={styles.contactItem}>
-                  {social.name}
-                </Link>
-              ))}
-            </View>
+            {/* Two Column Layout for Contact and Personal Info */}
+            <View style={isRTL ? styles.twoColumnContainerRTL : styles.twoColumnContainer}>
+              {/* Contact Information Column */}
+              <View style={styles.infoColumn}>
+                {RESUME_DATA.contact.email && (
+                  <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                    <Image src={emailIcon} style={styles.contactIcon} />
+                    <Link src={`mailto:${RESUME_DATA.contact.email}`} style={styles.contactItem}>
+                      {RESUME_DATA.contact.email}
+                    </Link>
+                  </View>
+                )}
+                {RESUME_DATA.contact.tel && (
+                  <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                    <Image src={phoneIcon} style={styles.contactIcon} />
+                    <Link src={`tel:${RESUME_DATA.contact.tel}`} style={styles.contactItem}>
+                      {RESUME_DATA.contact.tel}
+                    </Link>
+                  </View>
+                )}
+                {RESUME_DATA.contact.social.map((social) => {
+                  const iconSrc = social.name === 'GitHub' ? githubIcon : linkedinIcon;
+                  return (
+                    <View key={social.name} style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                      <Image src={iconSrc} style={styles.contactIcon} />
+                      <Link src={social.url} style={styles.contactItem}>
+                        {social.name}
+                      </Link>
+                    </View>
+                  );
+                })}
+              </View>
 
-            {/* Personal Information */}
-            <View style={isRTL ? styles.personalInfoRowRTL : styles.personalInfoRow}>
-              <Text style={styles.personalInfoItem}>
-                {messages.personalInfo.dateOfBirth}: {messages.personalInfo.values.dateOfBirth}
-              </Text>
-              <Text style={styles.personalInfoItem}>
-                {messages.personalInfo.placeOfBirth}: {messages.personalInfo.values.placeOfBirth}
-              </Text>
-              <Text style={styles.personalInfoItem}>
-                {messages.personalInfo.nationality}: {messages.personalInfo.values.nationality}
-              </Text>
-              <Text style={styles.personalInfoItem}>
-                {messages.personalInfo.maritalStatus}: {messages.personalInfo.values.maritalStatus}
-              </Text>
+              {/* Personal Information Column */}
+              <View style={styles.infoColumn}>
+                <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                  <Image src={calendarIcon} style={styles.contactIcon} />
+                  <Text style={styles.personalInfoItem}>
+                    {messages.personalInfo.values.dateOfBirth}
+                  </Text>
+                </View>
+                <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                  <Image src={homeIcon} style={styles.contactIcon} />
+                  <Text style={styles.personalInfoItem}>
+                    {messages.personalInfo.values.placeOfBirth}
+                  </Text>
+                </View>
+                <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                  <Image src={flagIcon} style={styles.contactIcon} />
+                  <Text style={styles.personalInfoItem}>
+                    {messages.personalInfo.values.nationality}
+                  </Text>
+                </View>
+                <View style={isRTL ? styles.contactRowRTL : styles.contactRow}>
+                  <Image src={heartIcon} style={styles.contactIcon} />
+                  <Text style={styles.personalInfoItem}>
+                    {messages.personalInfo.values.maritalStatus}
+                  </Text>
+                </View>
+              </View>
             </View>
           </View>
 

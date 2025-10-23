@@ -88,7 +88,7 @@ const arMessages = {
     nationality: "الجنسية",
     maritalStatus: "الحالة الاجتماعية",
     values: {
-      dateOfBirth: "01 سبتمبر 1997",
+      dateOfBirth: "01.09.1997",
       placeOfBirth: "حمص",
       nationality: "ألماني",
       maritalStatus: "متزوج"

@@ -88,7 +88,7 @@ const deMessages = {
     nationality: "Staatsangehörigkeit",
     maritalStatus: "Familienstand",
     values: {
-      dateOfBirth: "01. September 1997",
+      dateOfBirth: "01.09.1997",
       placeOfBirth: "Homs",
       nationality: "Deutsch",
       maritalStatus: "Verheiratet"

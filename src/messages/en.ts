@@ -88,7 +88,7 @@ const enMessages = {
     nationality: "Nationality",
     maritalStatus: "Marital Status",
     values: {
-      dateOfBirth: "01 September 1997",
+      dateOfBirth: "01.09.1997",
       placeOfBirth: "Homs",
       nationality: "German",
       maritalStatus: "Married"

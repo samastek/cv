@@ -1,0 +1,254 @@
+% Modern, clean CV matching the frontend design
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in]{geometry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{fontawesome5}
+\usepackage{parskip}
+\usepackage{multicol}
+
+% Colors matching frontend
+\definecolor{primary}{RGB}{0,172,215} % Cyan/Teal
+\definecolor{textgray}{RGB}{71,85,105} % slate-600
+\definecolor{lightgray}{RGB}{100,116,139} % slate-500
+\definecolor{darkgray}{RGB}{15,23,42} % slate-900
+
+% Font setup (using system fonts similar to Inter and Playfair Display)
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+
+% Hyperlink setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+    pdftitle={Sami Alzein - CV},
+    pdfauthor={Sami Alzein}
+}
+
+% Section formatting with short line on left, title, longer line on right
+\newcommand{\ruledsection}[1]{%
+  \vspace{1.5em}%
+  \par\noindent%
+  \hbox to \textwidth{%
+    \hbox to 2cm{\leaders\hrule height 0.4pt\hfill}%
+    \kern 0.5em%
+    {\Large\bfseries\sffamily\color{darkgray}#1}%
+    \kern 0.5em%
+    \leaders\hrule height 0.4pt\hfill%
+  }%
+  \par\vspace{0.8em}%
+}
+
+% Redefine both \section and \section* to use our custom format
+\makeatletter
+\let\oldsection\section
+\renewcommand{\section}{\@ifstar\ruledsection\ruledsection}
+\makeatother
+
+% Custom commands
+\newcommand{\name}[1]{\begin{center}\Huge\bfseries\sffamily\color{darkgray}#1\end{center}}
+\newcommand{\tagline}[1]{\begin{center}\large\color{textgray}#1\end{center}}
+\newcommand{\contact}[1]{\begin{center}\small\color{lightgray}#1\end{center}}
+
+\newcommand{\workentry}[5]{
+  \noindent
+  \textbf{\large #1} \hfill \textcolor{lightgray}{#2} \\
+  \textit{#3} \hfill \textcolor{lightgray}{\small #4} \\
+  #5
+}
+
+\newcommand{\eduentry}[4]{
+  \noindent
+  \textbf{\large #1} \hfill \textcolor{lightgray}{#2} \\
+  \textit{#3} \\
+  #4
+}
+
+\newcommand{\recognitionentry}[4]{
+  \noindent
+  \textbf{#1} \hfill \textcolor{lightgray}{#4} \\
+  \textit{#2 • #3}
+}
+
+\newcommand{\projectentry}[3]{
+  \noindent
+  \textbf{#1} \\
+  \textit{\small\color{lightgray}#2} \\
+  #3
+}
+
+% Remove page numbers
+\pagestyle{empty}
+
+% Adjust spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+\begin{document}
+
+% Header
+\name{Sami Alzein}
+\tagline{Software Engineer with team spirit, assertiveness, and solution-oriented working style}
+
+\vspace{0.3em}
+
+\contact{
+  \faMapMarker* \ 90449 Nuremberg, Germany \ \
+  \faEnvelope \ sami.alzein@hotmail.com \ \
+  \faPhone \ +49~177~4737348 \\
+  \faGlobe \ \href{https://sami.alzein.dev}{sami.alzein.dev} \ \
+  \faGithub \ \href{https://github.com/samastek}{samastek} \ \
+  \faLinkedin \ \href{https://www.linkedin.com/in/sami-alzein/}{sami-alzein}
+}
+
+\vspace{0.5em}
+
+\begin{center}
+  \small\color{lightgray}
+  \fbox{DOB: 01 September 1997} \
+  \fbox{Birthplace: Homs} \
+  \fbox{Nationality: German \& Syrian} \
+  \fbox{Marital Status: Single}
+\end{center}
+
+\vspace{0.5em}
+
+% Summary
+\section*{Summary}
+\color{textgray}
+Dedicated Software Engineer with a strong mathematical understanding and continuous willingness to learn. I bring team spirit, assertiveness, and the ability to think and work independently. My perseverance and self-discipline drive me to deliver solution-oriented results in challenging technical environments.
+
+% Work Experience
+\section*{Work Experience}
+
+\workentry{Siemens AG}{2022 -- Present}{R\&D Software Engineer}{Smart Infrastructure | R\&D | Full-time}{
+Working
+}
+
+\vspace{0.8em}
+
+\workentry{adorsys GmbH \& CO KG}{2020 -- 2022}{Software Engineer}{FinTech}{
+Software Engineer working with Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate, JUnit5, and Mockito. Experience with Angular, Flutter, Jenkins, Docker, Helm, and OpenShift. Part of dual study program in cooperation with Technical University of Nuremberg.
+}
+
+% Education
+\section*{Education}
+
+\eduentry{Technical University of Nuremberg (Technische Hochschule Nürnberg)}{2018 -- 2022}{Dual I.C.S. Bachelor's Degree in Computer Science}{
+In cooperation with adorsys GmbH \& CO KG, Final Grade: 2.0
+}
+
+\vspace{0.8em}
+
+\eduentry{General University Entrance Qualification}{2007 -- 2015}{Abitur}{
+Final Grade: 1.5 (Issued by German Recognition Office for Foreign Education)
+}
+
+% Recognitions
+\section*{Recognitions \& Awards}
+
+\recognitionentry{Germany Scholarship (Deutschlandstipendium)}{Technical University of Nuremberg}{Scholarship}{2020}
+
+Merit-based scholarship awarded for academic excellence and potential in Computer Science.
+
+\vspace{0.8em}
+
+\recognitionentry{I.C.S. Sponsorship Program Nomination}{Technical University of Nuremberg}{Academic Honor}{2020}
+
+Nominated and chosen for the I.C.S. Sponsorship Program recognizing outstanding academic performance in dual study program.
+
+\vspace{0.8em}
+
+\recognitionentry{Excellent Academic Performance}{General University Entrance Qualification}{Academic Achievement}{2015}
+
+Achieved final grade of 1.5 in General University Entrance Qualification (Abitur).
+
+% Skills
+\section*{Skills}
+
+\begin{multicols}{3}
+\small
+\begin{itemize}[leftmargin=*,noitemsep,topsep=0pt]
+  \item Java
+  \item Spring Boot
+  \item JavaScript
+  \item TypeScript
+  \item React/Next.js
+  \item Jenkins
+  \item IntelliJ
+  \item Git
+  \item Python
+  \item Linux
+  \item VsCode
+  \item Docker
+  \item Systemd
+  \item Debian
+  \item RAUC
+  \item Jira
+  \item Gitlab
+  \item IMX8Mini
+  \item Agile
+  \item Confluence
+  \item IoT
+  \item VIM
+\end{itemize}
+\end{multicols}
+
+% Projects
+\section*{Projects}
+
+\projectentry{Linux Charger Operating System}{Linux, Debian, Python, Systemd, RAUC, IMX8Mini}{
+Designed and developed software to build customized Linux-based operating system for electric vehicle chargers at Scale.
+}
+
+\vspace{0.8em}
+
+\projectentry{Industrial IoT Platform}{Java, Spring Boot, React, PostgreSQL, Docker, Kubernetes}{
+Developed comprehensive IoT solutions for industrial automation at Siemens, enabling real-time monitoring and control of manufacturing processes.
+}
+
+\vspace{0.8em}
+
+\projectentry{Financial Software Solutions}{Java, Spring Boot, Spring Security, OAuth2, Maven, Hibernate}{
+Developed and maintained financial software solutions at adorsys for clients with more than 10 Billion Euros in assets using Java and Spring Boot ecosystem. Focused on secure backend systems with OAuth2 authentication.
+}
+
+\vspace{0.8em}
+
+\projectentry{Dual Study Project}{Java, Angular, Jenkins, Docker, Helm, OpenShift}{
+Comprehensive software engineering project completed as part of dual study program in cooperation between Technical University of Nuremberg and adorsys.
+}
+
+\vspace{0.8em}
+
+\projectentry{Personal Portfolio}{Next.js, TypeScript, Tailwind CSS, Vercel}{
+Modern portfolio website showcasing my professional work and technical skills. Built with performance and accessibility in mind. \href{https://sami.alzein.dev/}{sami.alzein.dev}
+}
+
+% Languages
+\section*{Languages}
+
+\begin{itemize}[leftmargin=*,noitemsep]
+  \item \textbf{Arabic:} Native
+  \item \textbf{German:} Fluent
+  \item \textbf{English:} Very Good
+\end{itemize}
+
+% Interests
+\section*{Interests}
+
+\begin{itemize}[leftmargin=*,noitemsep]
+  \item Social Engagement: Support for refugees, translations, German language learning support
+  \item Volunteering with Mudra (counseling organization)
+  \item Classical Music: Enthusiast of Chopin, Vivaldi, Brahms
+  \item Professional Literature: Andrew Tannenbaum, William Stallings
+\end{itemize}
+
+\end{document}

@@ -137,7 +137,7 @@ export const RESUME_DATA = {
     {name: "IMX8Mini", src: "https://img.icons8.com/?size=100&id=RsXLIguGfnGw&format=png&color=000000"},
     {name: "Agile", src: "https://img.icons8.com/?size=100&id=MUG7hW421sY7&format=png&color=000000"},
     { name: "Confluence", src: "https://img.icons8.com/?size=100&id=oROcPah5ues6&format=png&color=000000" },
-    { name: "IoT", src: "https://img.icons8.com/?size=100&id=39292&format=png&color=000000" },
+    { name: "IoT", src: "https://img.icons8.com/?size=100&id=44471&format=png&color=000000" },
     { name: "VIM", src: "https://img.icons8.com/?size=100&id=20909&format=png&color=000000" },
 
   ],
@@ -158,6 +158,19 @@ export const RESUME_DATA = {
     "VIM",
   ],
   projects: [
+    {
+      title: "Linux Charger Operating System",
+      techStack: [
+        "Linux",
+        "Debian",
+        "Python",
+        "Systemd",
+        "RAUC",
+        "IMX8Mini"
+      ],
+      description:
+        "Designed and developed software to build customized Linux-based operating system for electric vehicle chargers at Scale.  ",
+    },
     {
       title: "Industrial IoT Platform",
       techStack: [
@@ -186,7 +199,7 @@ export const RESUME_DATA = {
         "Hibernate"
       ],
       description:
-        "Developed robust financial software solutions at adorsys using Java and Spring Boot ecosystem. Focused on secure backend systems with OAuth2 authentication.",
+        "Developed and maintained financial software solutions at adorsys for clients with more than 10 Billion Euros in assets using Java and Spring Boot ecosystem. Focused on secure backend systems with OAuth2 authentication.",
     },
     {
       title: "Dual Study Project",

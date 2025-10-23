@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/command";
 import { Button } from "./ui/button";
 import { CommandIcon } from "lucide-react";
+import { useLanguage, useTranslation } from "@/contexts/LanguageContext";
 
 interface Props {
   links: { url: string; title: string }[];
@@ -20,6 +21,9 @@ interface Props {
 
 export const CommandMenu = ({ links }: Props) => {
   const [open, setOpen] = React.useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = React.useState(false);
+  const { locale } = useLanguage();
+  const messages = useTranslation();
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -32,6 +36,41 @@ export const CommandMenu = ({ links }: Props) => {
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
+
+  const handleGeneratePdf = async () => {
+    try {
+      setIsGeneratingPdf(true);
+
+      // Call the API endpoint with current locale
+      const response = await fetch(`/api/generate-pdf?locale=${locale}`);
+
+      if (!response.ok) {
+        throw new Error('Failed to generate PDF');
+      }
+
+      // Get the PDF blob
+      const blob = await response.blob();
+
+      // Create a download link and trigger it
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Sami_Alzein_CV_${locale.toUpperCase()}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+
+      // Cleanup
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      setOpen(false);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsGeneratingPdf(false);
+    }
+  };
 
   return (
     <>
@@ -61,7 +100,13 @@ export const CommandMenu = ({ links }: Props) => {
                 window.print();
               }}
             >
-              <span>Print</span>
+              <span>{messages.commands.print}</span>
+            </CommandItem>
+            <CommandItem
+              onSelect={handleGeneratePdf}
+              disabled={isGeneratingPdf}
+            >
+              <span>{isGeneratingPdf ? messages.commands.generatingPdf : messages.commands.generatePdf}</span>
             </CommandItem>
           </CommandGroup>
           <CommandGroup heading="Links">

@@ -136,10 +136,17 @@ const enMessages = {
     languageSelector: "Select Language",
     timeline: {
       professional: "Professional",
-      academic: "Academic", 
+      academic: "Academic",
       current: "Current",
       technologiesExpertise: "Technologies & Expertise"
     }
+  },
+
+  // Command Menu
+  commands: {
+    print: "Print",
+    generatePdf: "Generate PDF",
+    generatingPdf: "Generating PDF..."
   }
 };
 

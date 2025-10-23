@@ -140,6 +140,13 @@ const deMessages = {
       current: "Aktuell",
       technologiesExpertise: "Technologien & Expertise"
     }
+  },
+
+  // Command Menu
+  commands: {
+    print: "Drucken",
+    generatePdf: "PDF generieren",
+    generatingPdf: "PDF wird generiert..."
   }
 };
 

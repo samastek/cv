@@ -140,6 +140,13 @@ const arMessages = {
       current: "حالي",
       technologiesExpertise: "التقنيات والخبرات"
     }
+  },
+
+  // Command Menu
+  commands: {
+    print: "طباعة",
+    generatePdf: "إنشاء PDF",
+    generatingPdf: "جارٍ إنشاء PDF..."
   }
 };
 
